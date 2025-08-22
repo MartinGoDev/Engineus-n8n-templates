@@ -1,0 +1,95 @@
+{
+    "nodes": [
+      {
+        "parameters": {},
+        "name": "Error Trigger",
+        "type": "n8n-nodes-base.errorTrigger",
+        "position": [
+          -140,
+          100
+        ],
+        "typeVersion": 1,
+        "id": "68ab875a-e7e6-485b-892b-9ed93893f62c"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "0720aaaa-e387-4fc2-934c-7898953bcfb9",
+                "name": "Error Id",
+                "value": "={{ $json.execution.id }}",
+                "type": "number"
+              },
+              {
+                "id": "b94f3b97-ba06-419d-8fa6-3a7fe97a29a1",
+                "name": "Workflow Error",
+                "value": "={{$node[\"Error Trigger\"].data[\"workflow\"][\"name\"]}}",
+                "type": "string"
+              },
+              {
+                "id": "495dce19-06cd-435b-bf38-e63c022315dd",
+                "name": "Error",
+                "value": "={{$node[\"Error Trigger\"].data[\"execution\"][\"error\"][\"message\"]}}",
+                "type": "string"
+              },
+              {
+                "id": "74b7c100-b71c-4390-a4a8-1563c31912f0",
+                "name": "Stack Trace",
+                "value": "={{$node[\"Error Trigger\"].data[\"execution\"][\"error\"][\"stack\"]}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          80,
+          100
+        ],
+        "id": "b7daee01-e594-4923-99b1-853141ed03e0",
+        "name": "Get Errror"
+      },
+      {
+        "parameters": {
+          "content": "# 👾 DISCORD CHANNEL \n\n## Join the conversation, share your workflows, and get real support from other automation builders.(pls no Spaghetti nodes) \n\n## 👉 [Join the Community here](https://discord.gg/Z48HxJhwKR)\n",
+          "height": 260,
+          "width": 1040,
+          "color": 5
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -460,
+          -180
+        ],
+        "id": "b33a05a0-acd8-47b7-bebf-4079490a6776",
+        "name": "Sticky Note3"
+      }
+    ],
+    "connections": {
+      "Error Trigger": {
+        "main": [
+          [
+            {
+              "node": "Get Errror",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Errror": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "pinData": {},
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "70e154ff71bb573464cd3c518eda69ab177cc3b4f9d6862d572e35d42bf5425f"
+    }
+  }
